@@ -1,0 +1,33 @@
+.table-container {
+    background: #fff;
+    max-height: 700px;
+    max-width: 760px;
+    width: 100%;
+    padding: 25px 30px;
+    border-radius: 5px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.report {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    padding: 5px;
+    width: 700px;
+    justify-content: center;
+    border: transparent;
+    border-bottom: 1px solid black;
+}
+.summary {
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+}
+.report:hover {
+    cursor: pointer;
+    background: linear-gradient(135deg, #71b7e6, #20b2aa);
+    border-color: transparent;
+    color: #fff;
+}

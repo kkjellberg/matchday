@@ -1,0 +1,35 @@
+.Teamsheet {
+    max-height: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    overflow: scroll;
+}
+.teamsheet-header {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.send-sheet {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.send-sheet button {
+    height: 30px;
+    width: 200px;
+    padding: 0 10px;
+}
+.send-sheet button:hover {
+    cursor: pointer;
+    background: linear-gradient(135deg, #71b7e6, #20b2aa);
+    border-color: transparent;
+    color: #fff;
+}
+.player-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}

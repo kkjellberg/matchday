@@ -1,0 +1,11 @@
+nav {
+    background: #fff;
+    width: max-content;
+    display: block;
+    padding: .7rem 1.7rem;
+    position: fixed;
+    left: 5rem;
+    bottom: 50%;
+    border-radius: 5px;
+    backdrop-filter: blur(15px);
+}
