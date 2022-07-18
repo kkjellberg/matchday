@@ -29,7 +29,7 @@ export default class NewReport extends React.Component {
   submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:6060/api/add_report", this.state)
+      .post("http://localhost:6061/api/add_report", this.state)
       .then((res) => {
         console.log(res.data);
       })

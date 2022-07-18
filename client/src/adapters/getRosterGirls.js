@@ -14,7 +14,7 @@ class Roster06DPL extends React.Component {
     this.props.innerRef(ref);
   }
   componentDidMount() {
-    axios.get("http://localhost:6060/api/girls_06DPL").then((res) => {
+    axios.get("http://localhost:6061/api/girls_06DPL").then((res) => {
       this.setState({ players: res.data });
     });
   }
@@ -61,7 +61,7 @@ class Roster06Academy extends React.Component {
     players: [],
   };
   componentDidMount() {
-    axios.get("http://localhost:6060/api/girls_06Premier").then((res) => {
+    axios.get("http://localhost:6061/api/girls_06Premier").then((res) => {
       this.setState({ players: res.data });
     });
   }
