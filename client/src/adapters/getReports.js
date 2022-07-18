@@ -4,13 +4,16 @@ import axios from "axios";
 export default class Reports extends React.Component {
   constructor(props){
     super(props);
-    this.state = {reports: [], open: false};
-    this.viewReport = this.viewReport.bind(this);
+    this.state = {
+      reports: [], 
+      // open: false
+    };
+    // this.viewReport = this.viewReport.bind(this);
   };
 
-  viewReport() {
-      this.setState({open: !this.state.open});
-  };
+  // viewReport() {
+  //     this.setState({open: !this.state.open});
+  // };
 
   componentDidMount() {
     axios.get("http://localhost:6060/api/all_reports").then((res) => {
@@ -24,13 +27,15 @@ export default class Reports extends React.Component {
         {this.state.reports.map((report) => (
           <div key={report.id}>
               <button className="report" onClick={this.viewReport}>
-                <p>{report.opponent_team}</p>
+                <p>{report.opponent_team} ({report.opponent_formation})</p>
                 <p>
                   {report.opponent_score}-{report.home_score}
                 </p>
-                <p>{report.home_team}</p>
+                <p>{report.home_team} ({report.home_formation})</p>
+                <p>{report.first_half}</p>
+                <p>{report.second_half}</p>
               </button>
-              {this.state.open ? (
+              {/* {this.state.open ? (
                   <div className="summary">
                     <h4>Formations</h4>
                     <p>Opponent:{report.opponent_formation} You:{report.home_formation}</p>
@@ -39,7 +44,7 @@ export default class Reports extends React.Component {
                     <h3>Second Half</h3>
                     <p>{report.second_half}</p>
                   </div>
-                ): null}
+                ): null} */}
           </div>
         ))}
       </div>
