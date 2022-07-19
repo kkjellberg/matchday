@@ -1,10 +1,10 @@
 import React from "react";
 import { Roster06Academy, Roster06DPL } from "../adapters/getRosterGirls";
-import {
-  threeFourThree,
-  fourThreeThree,
-  fourFourTwo,
-} from "../components/formations";
+// import {
+//   threeFourThree,
+//   fourThreeThree,
+//   fourFourTwo,
+// } from "../components/formations";
 import Navbar from "../components/Navbar";
 import SoccerLineUp from "react-soccer-lineup";
 import jsPDF from "jspdf";
@@ -17,6 +17,21 @@ export default class Teamsheet extends React.Component {
     this.state = {
       roster: "",
       formation: "",
+      gkName: "",
+      cb1Name: "",
+      cb2Name: "",
+      cb3Name: "",
+      rbName: "",
+      lbName: "",
+      cdmName: "",
+      cm1Name: "",
+      cm2Name: "",
+      rmName: "",
+      lmName: "",
+      rwName: "",
+      lwName: "",
+      st1Name: "",
+      st2Name: ""
     };
   };
 
@@ -38,15 +53,83 @@ handleDownload(){
   };
 
   render() {
-    const { roster, formation } = this.state;
+    const { roster, formation, gkName, cb1Name, cb2Name, cb3Name, rbName, lbName, cdmName, cm1Name, cm2Name, lmName, rmName, rwName, lwName, st1Name, st2Name } = this.state;
+
+    const threeFourThree = {
+      squad: {
+          gk: {name: gkName},
+          df: [{name: cb1Name}, {name: cb2Name}, {name: cb3Name}],
+          cm: [{name: rmName}, {name: cm1Name}, {name: cm2Name}, {name: lmName}],
+          fw: [{name: rwName}, {name: st1Name}, {name: lwName}]
+      }
+    };
+
+    const fourThreeThree = {
+      squad: {
+        gk: {name: gkName},
+        df: [{name: rbName}, {name: cb1Name}, {name: cb2Name}, {name: lbName}],
+        cm: [{name: cm1Name}, {name: cdmName}, {name: cm2Name}],
+        fw: [{name: rwName}, {name: st1Name}, {name: lwName}]
+      }
+    };
+    
+    const fourFourTwo = {
+      squad: {
+          gk: {name: gkName},
+          df: [{name: rbName}, {name: cb1Name}, {name: cb2Name}, {name: lbName}],
+          cm: [{name: rmName}, {name: cm1Name}, {name: cm2Name}, {name: lmName}],
+          fw: [{name: st1Name}, {name: st2Name}]
+      }
+    };
+
     let MyRoster;
     let form;
+    let eleven;
     if (this.state.formation === "3-4-3") {
       form = threeFourThree;
+      eleven = [
+        <li key={0}>GK:<input type="text" name="gkName" value={gkName} onChange={this.changeHandler}/></li>,
+        <li key={1}>CB:<input type="text" name="cb1Name" value={cb1Name} onChange={this.changeHandler}/></li>,
+        <li key={2}>CB:<input type="text" name="cb2Name" value={cb2Name} onChange={this.changeHandler}/></li>,
+        <li key={3}>CB:<input type="text"name="cb3Name" value={cb3Name} onChange={this.changeHandler}/></li>,
+        <li key={4}>RM:<input type="text"name="rmName" value={rmName} onChange={this.changeHandler}/></li>,
+        <li key={5}>CM:<input type="text" name="cm1Name" value={cm1Name} onChange={this.changeHandler}/></li>,
+        <li key={6}>CM:<input type="text" name="cm2Name" value={cm2Name} onChange={this.changeHandler}/></li>,
+        <li key={7}>LM:<input type="text" name="lmName" value={lmName} onChange={this.changeHandler}/></li>,
+        <li key={8}>RW:<input type="text" name="rwName" value={rwName} onChange={this.changeHandler}/></li>,
+        <li key={9}>ST:<input type="text" name="st1Name" value={st1Name} onChange={this.changeHandler}/></li>,
+        <li key={10}>LW:<input type="text" name="lwName" value={lwName} onChange={this.changeHandler}/></li>
+      ]
     } else if (this.state.formation === "4-3-3") {
       form = fourThreeThree;
+      eleven = [
+        <li key={0}>GK:<input type="text" name="gkName" value={gkName} onChange={this.changeHandler}/></li>,
+        <li key={1}>RB:<input type="text" name="rbName" value={rbName} onChange={this.changeHandler}/></li>,
+        <li key={2}>CB:<input type="text" name="cb1Name" value={cb1Name} onChange={this.changeHandler}/></li>,
+        <li key={3}>CB:<input type="text" name="cb2Name" value={cb2Name} onChange={this.changeHandler}/></li>,
+        <li key={4}>LB:<input type="text" name="lbName" value={lbName} onChange={this.changeHandler}/></li>,
+        <li key={5}>CM:<input type="text" name="cm1Name" value={cm1Name} onChange={this.changeHandler}/></li>,
+        <li key={6}>CDM:<input type="text" name="cdmName" value={cdmName} onChange={this.changeHandler}/></li>,
+        <li key={7}>CM:<input type="text" name="cm2Name" value={cm2Name} onChange={this.changeHandler}/></li>,
+        <li key={8}>RW:<input type="text" name="rwName" value={rwName} onChange={this.changeHandler}/></li>,
+        <li key={9}>ST:<input type="text" name="st1Name" value={st1Name} onChange={this.changeHandler}/></li>,
+        <li key={10}>LW:<input type="text" name="lwName" value={lwName} onChange={this.changeHandler}/></li>
+      ]
     } else if (this.state.formation === "4-4-2") {
       form = fourFourTwo;
+      eleven = [
+        <li key={0}>GK:<input type="text" name="gkName" value={gkName} onChange={this.changeHandler}/></li>,
+        <li key={1}>RB:<input type="text" name="rbName" value={rbName} onChange={this.changeHandler}/></li>,
+        <li key={2}>CB:<input type="text" name="cb1Name" value={cb1Name} onChange={this.changeHandler}/></li>,
+        <li key={3}>CB:<input type="text" name="cb2Name" value={cb2Name} onChange={this.changeHandler}/></li>,
+        <li key={4}>LB:<input type="text" name="lbName" value={lbName} onChange={this.changeHandler}/></li>,
+        <li key={5}>RM:<input type="text" name="rmName" value={rmName} onChange={this.changeHandler}/></li>,
+        <li key={6}>CM:<input type="text" name="cm1Name" value={cm1Name} onChange={this.changeHandler}/></li>,
+        <li key={7}>CM:<input type="text" name="cm2Name" value={cm2Name} onChange={this.changeHandler}/></li>,
+        <li key={8}>LM:<input type="text" name="lmName" value={lmName} onChange={this.changeHandler}/></li>,
+        <li key={9}>ST:<input type="text" name="st1Name" value={st1Name} onChange={this.changeHandler}/></li>,
+        <li key={10}>ST:<input type="text" name="st2Name" value={st2Name} onChange={this.changeHandler}/></li>
+      ]
     }
     if (this.state.roster === "06DPL") {
       MyRoster = <Roster06DPL />;
@@ -76,6 +159,9 @@ handleDownload(){
           </div>
           <div className="lineup">
             {MyRoster}
+            <ul className="starters">
+              {eleven}
+            </ul>
           </div>
           <div className="field">
             <SoccerLineUp

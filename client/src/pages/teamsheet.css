@@ -33,3 +33,18 @@
     grid-template-columns: 1fr 1fr;
     padding: 10px;
 }
+.lineup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.starters {
+    padding: 10px;
+}
+.starters li {
+    display: grid;
+    grid-template-columns: 4ch auto;
+    padding-bottom: 5px;
+}
+.starters input {
+    width: 50%;
+}
