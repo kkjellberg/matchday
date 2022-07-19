@@ -1,11 +1,24 @@
 nav {
     background: #fff;
     width: max-content;
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .5rem;
     padding: .7rem 1.7rem;
     position: fixed;
     left: 5rem;
     bottom: 50%;
     border-radius: 5px;
     backdrop-filter: blur(15px);
+}
+.nav-btn {
+    height: 20px;
+    width: 100px;
+    padding: 0 10px;
+}
+.nav-btn:hover {
+    cursor: pointer;
+    background: linear-gradient(135deg, #71b7e6, #20b2aa);
+    border-color: transparent;
+    color: #fff;
 }

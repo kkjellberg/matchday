@@ -29,9 +29,11 @@ export default class NewReport extends React.Component {
   submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:6061/api/add_report", this.state)
+      .post("http://localhost:6062/api/add_report", this.state)
       .then((res) => {
         console.log(res.data);
+      }).then(() => {
+        window.location.href = "/archive"
       })
       .catch((err) => {
         console.log(err);
@@ -77,6 +79,7 @@ export default class NewReport extends React.Component {
                 placeholder="Opponent"
                 value={opponent_team}
                 onChange={this.changeHandler}
+                required
               />
               <input
                 type="text"
@@ -85,6 +88,7 @@ export default class NewReport extends React.Component {
                 placeholder="0"
                 value={opponent_score}
                 onChange={this.changeHandler}
+                required
               />
             </div>
             <div className="home">
@@ -95,15 +99,21 @@ export default class NewReport extends React.Component {
                 placeholder="0"
                 value={home_score}
                 onChange={this.changeHandler}
+                required
               />
-              <input
+              {/* <input
                 type="text"
                 id="home_team"
                 name="home_team"
                 placeholder="Your Team"
                 value={home_team}
                 onChange={this.changeHandler}
-              />
+              /> */}
+              <select id="home_team" name="home_team" value={home_team} onChange={this.changeHandler} required>
+                <option value="0">Choose your team</option>
+                <option value="B-Elite 06 DPL">B-Elite 06 DPL</option>
+                <option value="B-Elite 06 Academy">B-Elite 06 Premier</option>
+              </select>
             </div>
           </div>
           <div className="field-view">
@@ -112,6 +122,7 @@ export default class NewReport extends React.Component {
                 name="opponent_formation"
                 value={opponent_formation}
                 onChange={this.changeHandler}
+                required
               >
                 <option value="0">Formation</option>
                 <option value="3-4-3">3-4-3</option>
@@ -122,6 +133,7 @@ export default class NewReport extends React.Component {
                 name="home_formation"
                 value={home_formation}
                 onChange={this.changeHandler}
+                required
               >
                 <option value="0">Formation</option>
                 <option value="3-4-3">3-4-3</option>
@@ -144,6 +156,7 @@ export default class NewReport extends React.Component {
               rows="7"
               value={first_half}
               onChange={this.changeHandler}
+              required
             />
             <textarea
               name="second_half"
@@ -151,6 +164,7 @@ export default class NewReport extends React.Component {
               rows="7"
               value={second_half}
               onChange={this.changeHandler}
+              required
             />
           </div>
           <div className="save-report">

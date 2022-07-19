@@ -16,9 +16,8 @@ export default class Teamsheet extends React.Component {
     super(props);
     this.state = {
       roster: "",
-      formation: ""
+      formation: "",
     };
-    this.printRef = React.createRef();
   };
 
 handleDownload(){
@@ -61,8 +60,8 @@ handleDownload(){
           <div className="teamsheet-header">
           <select name="roster" value={roster} onChange={this.changeHandler}>
             <option value="0">Choose your team</option>
-            <option value="06DPL">06 DPL</option>
-            <option value="06Academy">06 Premier</option>
+            <option value="06DPL">B-Elite 06 DPL</option>
+            <option value="06Academy">B-Elite 06 Premier</option>
           </select>
           <select
             name="formation"
@@ -78,7 +77,7 @@ handleDownload(){
           <div className="lineup">
             {MyRoster}
           </div>
-          <div className="field" ref={this.printRef}>
+          <div className="field">
             <SoccerLineUp
               size={"normal"}
               color={"#20b2aa"}

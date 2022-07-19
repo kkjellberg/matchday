@@ -16,7 +16,7 @@ export default class Reports extends React.Component {
   // };
 
   componentDidMount() {
-    axios.get("http://localhost:6061/api/all_reports").then((res) => {
+    axios.get("http://localhost:6062/api/all_reports").then((res) => {
       this.setState({ reports: res.data });
     });
   }

@@ -14,44 +14,40 @@ class Roster06DPL extends React.Component {
     this.props.innerRef(ref);
   }
   componentDidMount() {
-    axios.get("http://localhost:6061/api/girls_06DPL").then((res) => {
+    axios.get("http://localhost:6062/api/girls_06DPL").then((res) => {
       this.setState({ players: res.data });
     });
   }
   render() {
     return (
       <div>
-      <ul className="player-list">
-          {
-              this.state.players.map(player => <li key={player.id}>{player.first_name}</li>)
-          }
-      </ul>
-      <ul className="starters">
-
-      </ul>
-      <ul className="bench">
-
-      </ul>
+        <ul className="player-list">
+          {this.state.players.map((player) => (
+            <li key={player.id}>{player.first_name}</li>
+          ))}
+        </ul>
+        {/* <ul className="starters"></ul>
+        <ul className="bench"></ul> */}
       </div>
-    //   <div>
-    //     <DragDropContext>
-    //       <Droppable droppableId="players">
-    //         {(provided) => {
-    //           <ul
-    //             className="player-list"
-    //             {...provided.droppableProps}
-    //             ref={this.setRef}
-    //           >
-    //             {this.state.players.map((player) => (
-    //               <li key={player.id}>{player.first_name}</li>
-    //             ))}
-    //           </ul>;
-    //         }}
-    //       </Droppable>
-    //     </DragDropContext>
-    //     <ul className="starters"></ul>
-    //     <ul className="bench"></ul>
-    //   </div>
+      //   <div>
+      //     <DragDropContext>
+      //       <Droppable droppableId="players">
+      //         {(provided) => {
+      //           <ul
+      //             className="player-list"
+      //             {...provided.droppableProps}
+      //             ref={this.setRef}
+      //           >
+      //             {this.state.players.map((player) => (
+      //               <li key={player.id}>{player.first_name}</li>
+      //             ))}
+      //           </ul>;
+      //         }}
+      //       </Droppable>
+      //     </DragDropContext>
+      //     <ul className="starters"></ul>
+      //     <ul className="bench"></ul>
+      //   </div>
     );
   }
 }
@@ -61,7 +57,7 @@ class Roster06Academy extends React.Component {
     players: [],
   };
   componentDidMount() {
-    axios.get("http://localhost:6061/api/girls_06Premier").then((res) => {
+    axios.get("http://localhost:6062/api/girls_06Premier").then((res) => {
       this.setState({ players: res.data });
     });
   }

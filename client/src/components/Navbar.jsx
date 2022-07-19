@@ -6,13 +6,13 @@ export default class Navbar extends React.Component {
     return (
       <nav>
         <a href="/">
-            <p>Teamsheet</p>
+            <button className="nav-btn">Teamsheet</button>
         </a>
         <a href="/report">
-            <p>Match Report</p>
+            <button className="nav-btn">Report</button>
         </a>
         <a href="/archive">
-            <p>Archive</p>
+            <button className="nav-btn">Archive</button>
         </a>
       </nav>
     )

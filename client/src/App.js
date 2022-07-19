@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Teamsheet from "./pages/Teamsheet";
 import Report from "./pages/Report";
 import Archive from "./pages/Archive";

@@ -20,7 +20,6 @@
     border-bottom: 1px solid black;
 }
 .report:hover {
-    cursor: pointer;
     background: linear-gradient(135deg, #71b7e6, #20b2aa);
     border-color: transparent;
     color: #fff;
