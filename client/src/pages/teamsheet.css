@@ -48,3 +48,9 @@
 .starters input {
     width: 50%;
 }
+.name {
+    background: white;
+    color: black;
+    padding: 0 5px;
+    border-radius: 3px;
+}
